@@ -18,12 +18,12 @@ $rds = new Aws\Rds\RdsClient([
     'region'  => 'us-east-1'
 ]);
 $result = $rds->describeDBInstances(array(
-    'DBInstanceIdentifier' => 'MP1'
+    'DBInstanceIdentifier' => 'MP'
    
 ));
 $endpoint = $result['DBInstances'][0]['Endpoint']['Address'];
     echo "============\n". $endpoint . "================";
-$link = mysqli_connect($endpoint,"testconnection1","testconnection1","Project1");
+$link = mysqli_connect($endpoint,"osboxes.org","osboxes.org","MiniProject");
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
@@ -31,8 +31,7 @@ if (mysqli_connect_errno()) {
 else {
 echo "Success";
 }
-//below line is unsafe - $email is not checked for SQL injection -- don't do this in real life or use an ORM instead
-$link->real_query("SELECT * FROM MiniProject1 WHERE email = '$email'");
+$link->real_query("SELECT * FROM MiniProject WHERE email = '$email'");
 $res = $link->use_result();
 echo "Result set order...\n";
 while ($row = $res->fetch_assoc()) {
