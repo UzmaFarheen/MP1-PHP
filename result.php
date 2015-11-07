@@ -14,9 +14,9 @@ $uploaddir = '/tmp/';
 $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
 print '<pre>';
 if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
-  echo "File is valid, and was successfully uploaded.\n";
+  echo "File is valid, and successfully uploaded.\n";
 } else {
-    echo "Possible file upload attack!\n";
+    echo "Possible file upload!\n";
 }
 echo 'Here is some more debugging info:';
 print_r($_FILES);
@@ -30,7 +30,7 @@ $s3 = new Aws\S3\S3Client([
     'region'  => 'us-east-1'
 ]);
 #print_r($s3);
-$bucket = uniqid("mp1Sneha",false);
+$bucket = uniqid("MPUzma",false);
 #$result = $s3->createBucket(array(
 #    'Bucket' => $bucket
 #));
@@ -55,7 +55,7 @@ $rds = new Aws\Rds\RdsClient([
     'region'  => 'us-east-1'
 ]);
 $result = $rds->describeDBInstances(array(
-    'DBInstanceIdentifier' => 'MP1'
+    'DBInstanceIdentifier' => 'ITMO544-MP1-DB'
    
 ));
 $endpoint = $result['DBInstances'][0]['Endpoint']['Address'];
@@ -68,7 +68,7 @@ if (mysqli_connect_errno()) {
 else {
 echo "Success";
 }
-if (!($stmt = $link->prepare("INSERT INTO MiniProject1 (uname,email,phoneforsms,raws3url,finisheds3url,jpegfilename,state) VALUES (?,?,?,?,?,?,?)"))) {
+if (!($stmt = $link->prepare("INSERT INTO MP1 (uname,email,phoneforsms,raws3url,finisheds3url,jpegfilename,state) VALUES (?,?,?,?,?,?,?)"))) {
     echo "Prepare failed: (" . $link->errno . ") " . $link->error;
 }
 $uname="Sneha";
@@ -84,7 +84,7 @@ if (!$stmt->execute()) {
 }
 printf("%d Row inserted.\n", $stmt->affected_rows);
 $stmt->close();
-$link->real_query("SELECT * FROM MiniProject1");
+$link->real_query("SELECT * FROM MP1");
 $res = $link->use_result();
 echo "Result set order...\n";
 while ($row = $res->fetch_assoc()) {
