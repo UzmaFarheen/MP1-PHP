@@ -18,7 +18,7 @@ $rds = new Aws\Rds\RdsClient([
     'region'  => 'us-east-1'
 ]);
 $result = $rds->describeDBInstances(array(
-    'DBInstanceIdentifier' => 'MP'
+    'DBInstanceIdentifier' => 'ITMO544-MP1-DB'
    
 ));
 $endpoint = $result['DBInstances'][0]['Endpoint']['Address'];
@@ -31,7 +31,7 @@ if (mysqli_connect_errno()) {
 else {
 echo "Success";
 }
-$link->real_query("SELECT * FROM MiniProject WHERE email = '$email'");
+$link->real_query("SELECT * FROM MP1 WHERE email = '$email'");
 $res = $link->use_result();
 echo "Result set order...\n";
 while ($row = $res->fetch_assoc()) {
