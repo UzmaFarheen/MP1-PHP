@@ -7,7 +7,7 @@
   <script src="fotorama.js"></script>
 </head>
 <body>
-<div class="fotorama" data-width="700" data-ratio="700/467" data-max-width="100%">
+<div class="fotorama" data-width="700" data-ratio="600/465" data-max-width="100%">
 <?php
 session_start();
 $email = $_POST["email"];
