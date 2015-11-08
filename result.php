@@ -60,7 +60,7 @@ $result = $rds->describeDBInstances(array(
 ));
 $endpoint = $result['DBInstances'][0]['Endpoint']['Address'];
     echo "============\n". $endpoint . "================";
-$link = mysqli_connect($endpoint,"testconnection1","testconnection1","Project1");
+$link = mysqli_connect($endpoint,"UzmaFarheen","UzmaFarheen","Project1");
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
