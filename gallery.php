@@ -18,7 +18,7 @@ $client = new Aws\Rds\RdsClient([
  'region'  => 'us-east-1'
 ]);
 $result = $client->describeDBInstances([
-    'DBInstanceIdentifier' => 'MP1-DB',
+    'DBInstanceIdentifier' => 'mp1',
 ]);
 $endpoint = "";
 $endpoint = $result['DBInstances'][0]['Endpoint']['Address'];
@@ -29,7 +29,7 @@ if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
 }
-$link->real_query("SELECT * FROM MP1");
+$link->real_query("SELECT * FROM ITMO544");
 $res = $link->use_result();
 ?>
 
