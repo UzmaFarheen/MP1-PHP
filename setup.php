@@ -9,7 +9,7 @@ $result = $rds->describeDBInstances(array(
 ));
 $endpoint = $result['DBInstances'][0]['Endpoint']['Address'];
  echo "============\n". $endpoint . "================";
-$link = new mysqli($endpoint,"osboxes.org","osboxes.org",3306) or die("Error " . mysqli_error($link)); 
+$link = new mysqli($endpoint,"UzmaFarheen","UzmaFarheen",3306) or die("Error " . mysqli_error($link)); 
 $link->query("CREATE TABLE MP1 
 (
 ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
