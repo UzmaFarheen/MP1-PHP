@@ -4,13 +4,13 @@ $rds = new Aws\Rds\RdsClient([
  'region'  => 'us-east-1'
 ]);
 $result = $rds->describeDBInstances(array(
- 'DBInstanceIdentifier' => 'ITMO544-MP1-DB'
+ 'DBInstanceIdentifier' => 'mp1'
 
 ));
 $endpoint = $result['DBInstances'][0]['Endpoint']['Address'];
  echo "============\n". $endpoint . "================";
-$link = new mysqli($endpoint,"UzmaFarheen","UzmaFarheen",3306) or die("Error " . mysqli_error($link)); 
-$link->query("CREATE TABLE MP1 
+$link = new mysqli($endpoint,"UzmaFarheen","UzmaFarheen") or die("Error " . mysqli_error($link)); 
+$link->query("CREATE TABLE ITMO544 
 (
 ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 uname VARCHAR(20),
