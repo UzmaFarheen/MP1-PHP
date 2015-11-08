@@ -71,7 +71,7 @@ echo "Success";
 if (!($stmt = $link->prepare("INSERT INTO MP1 (uname,email,phoneforsms,raws3url,finisheds3url,jpegfilename,state) VALUES (?,?,?,?,?,?,?)"))) {
     echo "Prepare failed: (" . $link->errno . ") " . $link->error;
 }
-$uname="Sneha";
+$uname="Uzma";
 $email = $_POST['useremail'];
 $phoneforsms = $_POST['phone'];
 $raws3url = $url; 
