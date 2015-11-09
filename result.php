@@ -1,6 +1,5 @@
 <?php
 session_start();
-require 'vendor/autoload.php';
 var_dump($_POST);
 if(!empty($_POST)){
 echo $_POST['useremail'];
