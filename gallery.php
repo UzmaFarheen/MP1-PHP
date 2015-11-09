@@ -31,5 +31,5 @@ if (mysqli_connect_errno()) {
 }
 $link->real_query("SELECT * FROM ITMO544");
 $res = $link->use_result();
-?>
+
 
