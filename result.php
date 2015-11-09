@@ -1,6 +1,6 @@
 <?php
-echo "Hello World1";
 session_start();
+require 'vendor/autoload.php';
 var_dump($_POST);
 if(!empty($_POST)){
 echo $_POST['useremail'];
@@ -40,12 +40,13 @@ $result = $s3->createBucket([
     'ACL' => 'public-read',
     'Bucket' => $bucket
 ]);
+$s3->waitUntil('BucketExists', array( 'Bucket'=> $bucket));
 #print_r($result);
 $result = $s3->putObject([
     'ACL' => 'public-read',
     'Bucket' => $bucket,
-   'Key' => $uploadfile,
-'ContentType' => $_FILES['userfile']['type'],
+   'Key' =>  "Hello".$uploadfile,
+'ContentType' => $_FILES['userfile']['tmp.name'],
 'Body' => fopen($uploadfile,'r+')
 ]);
 $url = $result['ObjectURL'];
@@ -54,13 +55,13 @@ $rds = new Aws\Rds\RdsClient([
     'version' => 'latest',
     'region'  => 'us-east-1'
 ]);
-$result = $rds->describeDBInstances(array(
+$result = $rds->describeDBInstances([
     'DBInstanceIdentifier' => 'MP1-DB'
    
-));
+]);
 $endpoint = $result['DBInstances'][0]['Endpoint']['Address'];
     echo "============\n". $endpoint . "================";
-$link = mysqli_connect($endpoint,"UzmaFarheen","UzmaFarheen");
+$link = mysqli_connect($endpoint,"UzmaFarheen","UzmaFarheen",) or die("Error " . mysqli_error($link))
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
@@ -91,6 +92,7 @@ while ($row = $res->fetch_assoc()) {
     echo $row['id'] . " " . $row['email']. " " . $row['phoneforsms'];
 }
 $link->close();
+header('Location:gallery.php');
 ?> 
 
   
