@@ -24,5 +24,5 @@ Enter Email of user for gallery to browse: <input type="email" name="email">
 <input type="submit" value="Load Gallery" />
 </form>
 
-</body>
+
 </html>
