@@ -3,7 +3,7 @@ session_start();
 require 'vendor/autoload.php';
 #include CSS Style Sheet
    echo "<link rel='stylesheet' type='text/css' href='fotorama.css' />";
-#Include Java Script
+#include Java Script
 echo "<script type='text/javascript' src='fotorama.js'></script>";
 
 # Creating a client for the s3 bucket
