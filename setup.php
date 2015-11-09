@@ -1,4 +1,5 @@
 <?php
+require 'vendor/autoload.php';
 $rds = new Aws\Rds\RdsClient([
  'version' => 'latest',
  'region'  => 'us-east-1'
