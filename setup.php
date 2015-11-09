@@ -1,4 +1,6 @@
 <?php
+
+require 'vendor/autoload.php';
 $rds = new Aws\Rds\RdsClient([
  'version' => 'latest',
  'region'  => 'us-east-1'
@@ -14,10 +16,9 @@ $result = $rds->describeDBInstances(array(
 ));
 $endpoint = $result['DBInstances'][0]['Endpoint']['Address'];
  echo "============\n". $endpoint . "================\n";
- $link = new mysqli($endpoint,"UzmaFarheen","UzmaFarheen","TestProject",3306) or die("Error " . mysqli_error($link)); 
+ $link = new mysqli($endpoint,"UzmaFarheen","UzmaFarheen","Project",3306) or die("Error " . mysqli_error($link)); 
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
- \n";
  exit();
 }
 $link->query("CREATE TABLE ITMO544 
