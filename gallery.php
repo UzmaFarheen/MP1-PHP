@@ -1,13 +1,4 @@
-<html>
-<head><title>Gallery</title>
-  <!-- jQuery -->
-  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-  <!-- Fotorama -->
-  <link href="fotorama.css" rel="stylesheet">
-  <script src="fotorama.js"></script>
-</head>
-<body>
-<div class="fotorama" data-width="700" data-ratio="600/465" data-max-width="100%">
+
 <?php
 session_start();
 require 'vendor/autoload.php';
@@ -32,7 +23,17 @@ if (mysqli_connect_errno()) {
 $link->real_query("SELECT * FROM ITMO544");
 $res = $link->use_result();
 ?>
-
+<!DOCTYPE html>
+<html>
+<head><title>Gallery</title>
+  <!-- jQuery -->
+  <!-- Fotorama -->
+  <link href='fotorama.css' rel='stylesheet' type='text/css' >
+  <script src="fotorama.js"></script>
+</head>
+<body>
+  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<div class="fotorama" data-width="700" data-ratio="600/465" data-max-width="100%">
 </div>
 </body>
 </html>
