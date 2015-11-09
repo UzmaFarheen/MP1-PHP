@@ -28,12 +28,7 @@ $s3 = new Aws\S3\S3Client([
     'version' => 'latest',
     'region'  => 'us-east-1'
 ]);
-#print_r($s3);
 $bucket = uniqid("mpuzma",false);
-#$result = $s3->createBucket(array(
-#    'Bucket' => $bucket
-#));
-#
 ## AWS PHP SDK version 3 create bucket
 $result = $s3->createBucket([
     'ACL' => 'public-read',
@@ -42,9 +37,9 @@ $result = $s3->createBucket([
 $s3->waitUntil('BucketExists', array( 'Bucket'=> $bucket));
 #print_r($result);
 $result = $s3->putObject([
-    'ACL' => 'public-read',
-    'Bucket' => $bucket,
-   'Key' =>  $uploadfile,
+'ACL' => 'public-read',
+'Bucket' => $bucket,
+'Key' =>  $uploadfile,
 'ContentType' => $_FILES['userfile']['type'],
 'Body' => fopen($uploadfile,'r+')
 ]);
