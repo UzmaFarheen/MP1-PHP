@@ -30,7 +30,7 @@ $s3 = new Aws\S3\S3Client([
     'region'  => 'us-east-1'
 ]);
 #print_r($s3);
-$bucket = uniqid("MPUzma",false);
+$bucket = uniqid("mpuzma",false);
 #$result = $s3->createBucket(array(
 #    'Bucket' => $bucket
 #));
@@ -55,12 +55,12 @@ $rds = new Aws\Rds\RdsClient([
     'region'  => 'us-east-1'
 ]);
 $result = $rds->describeDBInstances(array(
-    'DBInstanceIdentifier' => 'ITMO544-MP1-DB'
+    'DBInstanceIdentifier' => 'MP1-DB'
    
 ));
 $endpoint = $result['DBInstances'][0]['Endpoint']['Address'];
     echo "============\n". $endpoint . "================";
-$link = mysqli_connect($endpoint,"UzmaFarheen","UzmaFarheen","Project1");
+$link = mysqli_connect($endpoint,"UzmaFarheen","UzmaFarheen");
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
