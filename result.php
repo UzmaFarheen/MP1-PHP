@@ -45,8 +45,8 @@ $s3->waitUntil('BucketExists', array( 'Bucket'=> $bucket));
 $result = $s3->putObject([
     'ACL' => 'public-read',
     'Bucket' => $bucket,
-   'Key' =>  "Hello".$uploadfile,
-'ContentType' => $_FILES['userfile']['tmp.name'],
+   'Key' =>  $uploadfile,
+'ContentType' => $_FILES['userfile']['type'],
 'Body' => fopen($uploadfile,'r+')
 ]);
 $url = $result['ObjectURL'];
@@ -55,13 +55,13 @@ $rds = new Aws\Rds\RdsClient([
     'version' => 'latest',
     'region'  => 'us-east-1'
 ]);
-$result = $rds->describeDBInstances([
-    'DBInstanceIdentifier' => 'MP1-DB'
-   
+$result = $rds->describeDBInstances(array(
+    'DBInstanceIdentifier' => 'mp1'
+  )
 ]);
 $endpoint = $result['DBInstances'][0]['Endpoint']['Address'];
     echo "============\n". $endpoint . "================";
-$link = mysqli_connect($endpoint,"UzmaFarheen","UzmaFarheen",) or die("Error " . mysqli_error($link))
+$link = mysqli_connect($endpoint,"UzmaFarheen","UzmaFarheen","Project",3306) or die("Error " . mysqli_error($link))
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
@@ -69,7 +69,7 @@ if (mysqli_connect_errno()) {
 else {
 echo "Success";
 }
-if (!($stmt = $link->prepare("INSERT INTO MP1 (uname,email,phoneforsms,raws3url,finisheds3url,jpegfilename,state) VALUES (?,?,?,?,?,?,?)"))) {
+if (!($stmt = $link->prepare("INSERT INTO ITMO544 (uname,email,phoneforsms,raws3url,finisheds3url,jpegfilename,state) VALUES (?,?,?,?,?,?,?)"))) {
     echo "Prepare failed: (" . $link->errno . ") " . $link->error;
 }
 $uname="Uzma";
@@ -85,7 +85,7 @@ if (!$stmt->execute()) {
 }
 printf("%d Row inserted.\n", $stmt->affected_rows);
 $stmt->close();
-$link->real_query("SELECT * FROM MP1");
+$link->real_query("SELECT * FROM ITMO544");
 $res = $link->use_result();
 echo "Result set order...\n";
 while ($row = $res->fetch_assoc()) {
@@ -93,6 +93,7 @@ while ($row = $res->fetch_assoc()) {
 }
 $link->close();
 header('Location:gallery.php');
+die();
 ?> 
 
   
