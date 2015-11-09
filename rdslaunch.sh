@@ -14,7 +14,7 @@ if [ ${dbInstanceARR[i]} == "mp1" ]
 then 
 echo "db exists"
 else
-aws rds create-db-instance --db-instance-identifier mp1 --db-instance-class db.t1.micro --engine MySQL --master-username UzmaFarheen --master-user-password UzmaFarheen --allocated-storage 5
+aws rds create-db-instance --db-instance-identifier mp1 --db-instance-class db.t2.micro --engine MySQL --master-username UzmaFarheen --master-user-password UzmaFarheen --allocated-storage 5
  fi  
 done
 fi
