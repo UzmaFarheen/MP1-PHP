@@ -69,7 +69,7 @@ if (mysqli_connect_errno()) {
 else {
 echo "Success";
 }
-if (!($stmt = $link->prepare("INSERT INTO ITMO544 (uname,email,phoneforsms,raws3url,finisheds3url,jpegfilename,state) VALUES (?,?,?,?,?,?,?)"))) {
+if (!($stmt = $link->prepare("INSERT INTO ITMO544(uname,email,phoneforsms,raws3url,finisheds3url,jpegfilename,state) VALUES (?,?,?,?,?,?,?)"))) {
     echo "Prepare failed: (" . $link->errno . ") " . $link->error;
 }
 $uname="Uzma";
