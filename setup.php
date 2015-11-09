@@ -9,12 +9,12 @@ $s3 = new Aws\S3\S3Client([
  'region'  => 'us-east-1'
 ]);
 
-$result = $rds->describeDBInstances([
+$result = $rds->describeDBInstances(array(
  'DBInstanceIdentifier' => 'mp1'
-]);
+));
 $endpoint = $result['DBInstances'][0]['Endpoint']['Address'];
  echo "============\n". $endpoint . "================\n";
- $link = new mysqli($endpoint,"UzmaFarheen","UzmaFarheen","TestProject") or die("Error " . mysqli_error($link)); 
+ $link = new mysqli($endpoint,"UzmaFarheen","UzmaFarheen","TestProject",3306) or die("Error " . mysqli_error($link)); 
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
  \n";
